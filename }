@@ -1,0 +1,44 @@
+const std = @import("std");
+const game = @import("game.zig");
+
+const snake = game.snake;
+const food = game.food;
+const grid_rows = game.grid_rows;
+const grid_cols = game.grid_cols;
+
+const SNAKE_HEAD = "●";
+const SNAKE_BODY = "○";
+const FOOD = "★";
+const EMPTY = " ";
+
+const HORIZONTAL = "━";
+const VERTICAL = "┃";
+const UPPER_LEFT_CORNER = "┏";
+const UPPER_RIGHT_CORNER = "┓";
+const BOTTOM_LEFT_CORNER = "┗";
+const BOTTOM_RIGHT_CORNER = "┛";
+
+
+pub fn draw_grid() !void {
+    std.debug.print("\x1B[2J\x1B[H", .{}); // Clear and reset cursor
+    // std.debug.print("\x1B[H", .{}); // Just reset cursor
+
+    std.debug.print("{s}", .{UPPER_LEFT_CORNER});
+    for (0..grid_cols) |_| {
+        std.debug.print("{s}", .{HORIZONTAL});
+    }
+    std.debug.print("{s}\n", .{UPPER_RIGHT_CORNER});
+
+    for (0..grid_rows) |row| {
+        std.debug.print("{s}", .{VERTICAL}); // left vertical border
+        for (0..grid_cols) |col| {
+            if (game.snake.body[0].row == row and game.snake.body[0].col == col) {
+                std.debug.print("{s}", .{SNAKE_HEAD});
+            } else if (game.food.row == row and game.food.col == col) {
+                std.debug.print("{s}", .{FOOD});
+            }
+        }
+    }
+    std.debug.print("{s}", .{VERTICAL}); // right vertical border
+
+}
