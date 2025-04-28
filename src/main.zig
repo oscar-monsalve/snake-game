@@ -3,8 +3,8 @@ const game = @import("game.zig");
 const render = @import("render.zig");
 const input = @import("input.zig");
 
-const ROWS: u32 = 10;
-const COLS: u32 = 25;
+const ROWS: u32 = 10 * 2;
+const COLS: u32 = 25 * 2;
 const UPDATE_TIME: f32 = 0.2;
 
 pub fn main() !void {
