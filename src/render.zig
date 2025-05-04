@@ -18,8 +18,8 @@ const BOTTOM_RIGHT_CORNER = "┛";
 
 
 pub fn draw_grid(grid_rows: u32, grid_cols: u32) !void {
-    // std.debug.print("\x1B[2J\x1B[H", .{}); // Clear and reset cursor
-    std.debug.print("\x1B[H", .{}); // Just reset cursor
+    std.debug.print("\x1B[2J\x1B[H", .{}); // Clear and reset cursor
+    // std.debug.print("\x1B[H", .{}); // Just reset cursor
 
     // Top border
     std.debug.print("{s}", .{UPPER_LEFT_CORNER});

@@ -74,17 +74,14 @@ pub fn init(rows: u32, cols: u32) !void {
 
     assert(snake.body[0].row >= 0 and snake.body[0].row < grid_rows);
     assert(snake.body[0].col >= 0 and snake.body[0].col < grid_cols);
-
-    // std.debug.print("Snake position: ({}, {})\n", .{snake.body[0].row, snake.body[0].col});
-    // std.debug.print("Food position: ({}, {})\n", .{food.row, food.col});
 }
 
 /// Returns true if the row and col of the random food placement
 /// is on top of the snake's body
-fn is_position_on_snake(pos: Position) bool {
+fn is_position_on_snake(food_pos: Position) bool {
     var i: u32 = 0;
     while (i < snake.length) : (i += 1) {
-        if (snake.body[i].row == pos.row and snake.body[i].col == pos.col) {
+        if (snake.body[i].row == food_pos.row and snake.body[i].col == food_pos.col) {
             return true;
         }
     }

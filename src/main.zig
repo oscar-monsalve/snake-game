@@ -4,8 +4,8 @@ const render = @import("render.zig");
 const input = @import("input.zig");
 
 const ROWS: u32 = 10 * 2;
-const COLS: u32 = 25 * 2;
-const UPDATE_TIME: f32 = 0.2;
+const COLS: u32 = 30 * 2;
+const UPDATE_TIME: f32 = 0.6;
 
 pub fn main() !void {
     try game.init(ROWS, COLS);
